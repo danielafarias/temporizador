@@ -1,5 +1,5 @@
 import Temporizador from './components/Timer'
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef, useEffect, useState } from 'react';
+import github from '../github.png';
 
 function Temporizador() {
     const [num, setNum] = useState(100); // Number default value;
@@ -15,19 +16,28 @@ function Temporizador() {
         return () => clearInterval(intervalRef.current); // Save reference
     }, []);
 
-    const HandleClick = () => { //Button Event
+    const handleClick = () => { //Button Event
         if (!pause) {
             clearInterval(intervalRef.current); // If [pause = false] the interval reference is be the same = Run
         } else {
             intervalRef.current = setInterval(decreaseNum, 1000); // If [pause = true] will stop useEffect() = Pause
-        }
+        } 
         setPause((prev) => !prev);
+
     };
 
     return (
-        <div>
-            <div>{num}</div>
-            <button onClick={HandleClick}>{pause ? "Run" : "Pause"}</button>
+        <div className='timer'>
+            <h1>TIMER</h1>
+            <div className='number'>{num}</div>
+            <div className='buttons'>
+                <button id='button' onClick={handleClick}>{pause ? "Run" : "Pause"}</button>
+            </div>
+            <div className='footer'>
+                <a href='https://github.com/danielafarias/timer'>
+                    <img className='git-logo' alt='github logo' src={github}></img>
+                </a>
+            </div>
         </div>
     );
 }
